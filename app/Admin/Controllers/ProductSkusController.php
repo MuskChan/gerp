@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\Customer;
+use App\Models\ProductSku;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -10,7 +10,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
-class CustomerController extends Controller
+class ProductSkusController extends Controller
 {
     use HasResourceActions;
 
@@ -23,8 +23,8 @@ class CustomerController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('客户')
-            ->description('列表')
+            ->header('Index')
+            ->description('description')
             ->body($this->grid());
     }
 
@@ -79,16 +79,14 @@ class CustomerController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new Customer);
+        $grid = new Grid(new ProductSku);
 
         $grid->id('Id');
-        $grid->name('Name');
-        $grid->gender('Gender');
-        $grid->phone_number('Phone number');
-        $grid->email('Email');
-        $grid->address('Address');
-        $grid->source('Source');
-        $grid->type('Type');
+        $grid->title('Title');
+        $grid->description('Description');
+        $grid->price('Price');
+        $grid->stock('Stock');
+        $grid->product_id('Product id');
         $grid->deleted_at('Deleted at');
         $grid->created_at('Created at');
         $grid->updated_at('Updated at');
@@ -104,16 +102,14 @@ class CustomerController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(Customer::findOrFail($id));
+        $show = new Show(ProductSku::findOrFail($id));
 
         $show->id('Id');
-        $show->name('Name');
-        $show->gender('Gender');
-        $show->phone_number('Phone number');
-        $show->email('Email');
-        $show->address('Address');
-        $show->source('Source');
-        $show->type('Type');
+        $show->title('Title');
+        $show->description('Description');
+        $show->price('Price');
+        $show->stock('Stock');
+        $show->product_id('Product id');
         $show->deleted_at('Deleted at');
         $show->created_at('Created at');
         $show->updated_at('Updated at');
@@ -128,15 +124,13 @@ class CustomerController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Customer);
+        $form = new Form(new ProductSku);
 
-        $form->text('name', 'Name');
-        $form->radio('gender', 'Gender')->options(['m' => 'Female', 'f'=> 'Male'])->default('f');
-        $form->mobile('phone_number', 'Phone number')->options(['mask' => '999 9999 9999']);
-        $form->email('email', 'Email');
-        $form->text('address', 'Address');
-        $form->switch('source', 'Source');
-        $form->switch('type', 'Type');
+        $form->text('title', 'Title');
+        $form->text('description', 'Description');
+        $form->decimal('price', 'Price');
+        $form->number('stock', 'Stock');
+        $form->number('product_id', 'Product id');
 
         return $form;
     }
