@@ -131,8 +131,8 @@ class CustomerController extends Controller
         $form = new Form(new Customer);
 
         $form->text('name', 'Name');
-        $form->text('gender', 'Gender');
-        $form->number('phone_number', 'Phone number');
+        $form->radio('gender', 'Gender')->options(['m' => 'Female', 'f'=> 'Male'])->default('f');
+        $form->mobile('phone_number', 'Phone number')->options(['mask' => '999 9999 9999']);
         $form->email('email', 'Email');
         $form->text('address', 'Address');
         $form->switch('source', 'Source');
