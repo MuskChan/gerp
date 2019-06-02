@@ -9,6 +9,7 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
+use Illuminate\Support\Facades\DB;
 
 class ProductSkusController extends Controller
 {
@@ -130,7 +131,8 @@ class ProductSkusController extends Controller
         $form->text('description', 'Description');
         $form->decimal('price', 'Price');
         $form->number('stock', 'Stock');
-        $form->number('product_id', 'Product id');
+        $form->select('product_id', 'Product id')->options('../datas/getProduct');
+        
 
         return $form;
     }
