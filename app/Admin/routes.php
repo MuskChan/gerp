@@ -14,6 +14,7 @@ Route::group([
     $router->resource('customers', CustomerController::class);
     $router->resource('products', ProductsController::class);
     //$router->resource('product_skus', ProductSkusController::class);
+    $router->resource('orders', OrdersController::class);
 
 	$router->get('/product_skus', 'ProductSkusController@index')->name('product_skus.index');
 	$router->get('/product_skus/create', 'ProductSkusController@create')->name('product_skus.create');
