@@ -23,6 +23,9 @@ Route::group([
 	$router->get('/product_skus/{product_sku}/edit', 'ProductSkusController@edit')->name('product_skus.edit');
 	$router->put('/product_skus/{product_sku}', 'ProductSkusController@update')->name('product_skus.update');
 	$router->delete('/product_skus/{product_sku}', 'ProductSkusController@destroy')->name('product_skus.destroy');
-    $router->get('datas/getProduct', 'DatasController@getProduct');
+
+    $router->get('datas/getProduct', 'DatasController@getProduct');    
+    $router->get('datas/getCustomer', 'DatasController@getCustomer');
+    $router->get('datas/getProductSku', 'DatasController@getProductSku');
 
 });

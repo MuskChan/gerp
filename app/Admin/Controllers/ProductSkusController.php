@@ -133,7 +133,6 @@ class ProductSkusController extends Controller
         $form->number('stock', 'Stock');
         $form->select('product_id', 'Product id')->options('../datas/getProduct');
         
-
         return $form;
     }
 }

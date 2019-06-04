@@ -23,8 +23,8 @@ class OrdersController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Index')
-            ->description('description')
+            ->header('订单')
+            ->description('列表')
             ->body($this->grid());
     }
 
@@ -148,8 +148,9 @@ class OrdersController extends Controller
     {
         $form = new Form(new Order);
 
-        $form->text('no', 'No');
-        $form->number('customer_id', 'Customer id');
+        $form->select('customer_id', 'Customer id')->options('../datas/getCustomer');
+        $form->select('product_sku_id', '单品')->options('../datas/getProductSku');
+
         $form->textarea('address', 'Address');
         $form->decimal('total_amount', 'Total amount');
         $form->textarea('remark', 'Remark');
@@ -163,7 +164,6 @@ class OrdersController extends Controller
         $form->text('ship_status', 'Ship status')->default('pending');
         $form->textarea('ship_data', 'Ship data');
         $form->textarea('extra', 'Extra');
-        $form->number('user_id', 'User id');
 
         return $form;
     }
