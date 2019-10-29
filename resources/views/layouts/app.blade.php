@@ -41,6 +41,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
   @include('layouts._header')
+    @yield('content')
   @include('layouts._footer')
 
   <!-- Control Sidebar -->
