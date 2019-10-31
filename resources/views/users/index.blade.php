@@ -18,6 +18,10 @@
 
     <!-- Main content -->
     <section class="content">
+
+      <a class="btn btn-app" data-target="#modal-default" data-toggle="modal">
+        <i class="fa fa-edit"></i> Edit
+      </a>
       <div class="row">
         <div class="col-xs-12">
           <!-- /.box -->
@@ -59,4 +63,44 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">create user</h4>
+        </div>
+        <div class="modal-body">
+          <form id="form_data" method="post">
+            {{csrf_field()}}
+            <div class="form-group has-feedback">
+              <input type="email" name="email" class="form-control" placeholder="Email">
+              <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+              <input type="text" name="name" class="form-control" placeholder="Name">
+              <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="add()">Save changes</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <script>
+    function add() {
+      var form_data = $('#form_data').serialize();
+      console.log(form_data);
+      $.post("{{route('users.store')}}",form_data, function( res ) {
+        console.log(res);
+      });
+    }
+  </script>
 @endsection

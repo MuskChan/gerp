@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -34,9 +35,15 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
-        //
+        $data = $request->except('_token');
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make('111111');
+        $res = $user->save();
+        //return success();//redirect()->route('users.index');
+        //$user->
     }
 
     /**
