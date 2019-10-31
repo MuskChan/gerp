@@ -1,8 +1,8 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  @include('layouts._header')
+  @include('layouts._body_header')
   @yield('content')
-  @include('layouts._footer')
+  @include('layouts._body_footer')
 
 <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark" style="display: none;">

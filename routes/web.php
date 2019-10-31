@@ -11,7 +11,7 @@
 |
 */
 
-Route::resource('/', 'IndexsController');
+Route::resource('/', 'HomeController');
 Route::resource('/users', 'UsersController');
 
 Auth::routes();
