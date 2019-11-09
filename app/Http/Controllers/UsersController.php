@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Auth;
+use App\Handlers\ImageUploadHandler;
 
 class UsersController extends Controller
 {
@@ -54,7 +56,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('users.show');
     }
 
     /**
@@ -75,9 +77,20 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ImageUploadHandler $uploader, User $user)
     {
-        //
+        $data = $request->all();
+        $user->id = 1;
+        if ($request->avatar) {
+            $result = $uploader->save($request->avatar, 'avatars', $user->id, 416);
+
+            if ($result) {
+                $data['avatar'] = $result['path'];
+            }
+        }
+
+        $user->update($data);
+        return redirect()->route('users.show', $user->id)->with('success', '个人资料更新成功！');
     }
 
     /**
