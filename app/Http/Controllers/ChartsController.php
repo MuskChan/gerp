@@ -3,22 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Auth;
-use App\Handlers\ImageUploadHandler;
 
-class UsersController extends Controller
+class ChartsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user)
+    public function index()
     {
-        $users = $user->all();
-        return view('users.index', compact('users'));
+        return view('charts.index');
     }
 
     /**
@@ -37,15 +32,9 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $user)
+    public function store(Request $request)
     {
-        $data = $request->except('_token');
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make('111111');
-        $res = $user->save();
-        //return success();//redirect()->route('users.index');
-        //$user->
+        //
     }
 
     /**
@@ -56,7 +45,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        return view('users.show');
+        //
     }
 
     /**
@@ -77,19 +66,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ImageUploadHandler $uploader, User $user)
+    public function update(Request $request, $id)
     {
-        $data = $request->all();
-        if ($request->avatar) {
-            $result = $uploader->save($request->avatar, 'avatars', $user->id, 416);
-
-            if ($result) {
-                $data['avatar'] = $result['path'];
-            }
-        }
-
-        $user->update($data);
-        return redirect()->route('users.show', $user->id)->with('success', '个人资料更新成功！');
+        //
     }
 
     /**

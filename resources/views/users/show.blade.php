@@ -99,7 +99,7 @@
             </ul>
             <div class="tab-content">
               <div class="tab-pane" id="settings">
-                <form class="form-horizontal" action="{{route('users.update',1)}}" method="post" enctype="multipart/form-data">
+                <form class="form-horizontal" action="{{route('users.update',Auth::user()->id)}}" method="post" enctype="multipart/form-data">
                   {{csrf_field()}}
                   @method('PUT')
                   <div class="form-group">

@@ -217,7 +217,7 @@
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <img src="{{Auth::user()->avatar}}" class="user-image" alt="User Image">
-            <span class="hidden-xs">Alexander Pierce</span>
+            <span class="hidden-xs">{{Auth::user()->name}}</span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
@@ -225,7 +225,7 @@
               <img src="{{Auth::user()->avatar}}" class="img-circle" alt="User Image">
 
               <p>
-                Alexander Pierce - Web Developer
+                {{Auth::user()->name}} - Web Developer
                 <small>Member since Nov. 2012</small>
               </p>
             </li>
@@ -247,10 +247,13 @@
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
-                {!--<a href="{{route('users.show',1)}}" class="btn btn-default btn-flat">Profile</a>
-              </div>--}
+                <a href="{{route('users.show',Auth::user()->id)}}" class="btn btn-default btn-flat">Profile</a>
+              </div>
               <div class="pull-right">
-                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                <a href="#" class="btn btn-default btn-flat" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sign out</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+                </form>
               </div>
             </li>
           </ul>
@@ -273,7 +276,7 @@
         <img src="{{Auth::user()->avatar}}" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p>Alexander Pierce</p>
+        <p>{{Auth::user()->name}}</p>
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
     </div>
@@ -300,19 +303,19 @@
         </a>
         <ul class="treeview-menu">
           <li class="active"><a href="{{route('users.index')}}"><i class="fa fa-circle-o"></i>用户管理</a></li>
-          <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+          <li><a href="index2.html"><i class="fa fa-circle-o"></i>权限管理</a></li>
         </ul>
       </li>
       <li class="active treeview">
         <a href="#">
-          <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          <i class="fa fa-dashboard"></i> <span>其他</span>
           <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
         </a>
         <ul class="treeview-menu">
-          <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-          <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+          <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i>支付</a></li>
+          <li><a href="{{route('charts.index')}}"><i class="fa fa-circle-o"></i>数据报表</a></li>
         </ul>
       </li>
       <li class="treeview">
@@ -341,15 +344,15 @@
       <li class="treeview">
         <a href="#">
           <i class="fa fa-pie-chart"></i>
-          <span>Charts</span>
+          <span>仓库</span>
           <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-          <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-          <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
+          <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i>商品明细</a></li>
+          <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i>商品类别</a></li>
+          <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i>库存</a></li>
           <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
         </ul>
       </li>
