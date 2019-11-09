@@ -269,6 +269,15 @@
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
   <!-- sidebar: style can be found in sidebar.less -->
+  @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+    @if(session()->has($msg))
+      <div class="flash-message">
+        <p class="alert alert-{{ $msg }}">
+          {{ session()->get($msg) }}
+        </p>
+      </div>
+    @endif
+  @endforeach
   <section class="sidebar">
     <!-- Sidebar user panel -->
     <div class="user-panel">

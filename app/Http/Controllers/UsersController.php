@@ -39,13 +39,13 @@ class UsersController extends Controller
      */
     public function store(Request $request, User $user)
     {
-        $data = $request->except('_token');
+        $request->except('_token');
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make('111111');
-        $res = $user->save();
-        //return success();//redirect()->route('users.index');
-        //$user->
+        $user->save();
+
+        return success('新增用户成功');
     }
 
     /**

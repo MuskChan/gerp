@@ -86,7 +86,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default " data-dismiss="modal" id="Close">Close</button>
           <button type="button" class="btn btn-primary" onclick="add()">Save changes</button>
         </div>
       </div>
@@ -100,6 +100,9 @@
       console.log(form_data);
       $.post("{{route('users.store')}}",form_data, function( res ) {
         console.log(res);
+        if(res.code == 1){
+          $('#Close').click();
+        }
       });
     }
   </script>
