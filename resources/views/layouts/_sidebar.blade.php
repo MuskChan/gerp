@@ -48,10 +48,10 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a href="pages/widgets.html" class="nav-link">
+          <a href="{{route('charts.index')}}" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
             <p>
-              数据报表
+              知识体系
               <span class="right badge badge-danger">New</span>
             </p>
           </a>
@@ -126,7 +126,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/charts/inline.html" class="nav-link">
+              <a href="{{route('charts.index')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>知识体系</p>
               </a>

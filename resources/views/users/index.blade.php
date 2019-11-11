@@ -98,7 +98,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="Close">Close</button>
           <button type="button" class="btn btn-primary"  onclick="add()">Save changes</button>
         </div>
       </div>
@@ -125,6 +125,30 @@
 
 @section('script')
   <script>
+
+    //新增用户
+    function add() {
+      var form_data = $('#form_data').serialize();
+
+      $.ajax({
+        url: "{{route('users.store')}}",
+        type: 'POST',
+        data: form_data,
+        success: function(res){
+          if(res.code == 1){
+            $('#Close').click();
+            toastr.success(res.msg);
+          }else {
+            toastr.error(res.message);
+          }
+        },
+        error: function(data){
+          toastr.error(data.responseJSON.message);
+        }
+      });
+    }
+
+    //表格
     $(function () {
       $("#example1").DataTable();
     });

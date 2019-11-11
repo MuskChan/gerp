@@ -13,7 +13,7 @@ class ChartsController extends Controller
      */
     public function index()
     {
-        return view('charts.index');
+        return view('charts.index2');
     }
 
     /**

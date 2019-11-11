@@ -1,324 +1,566 @@
 @extends('layouts.app')
 
+@section('css')
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{asset('AdminLTE/plugins/fontawesome-free/css/all.min.css')}}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{asset('AdminLTE/dist/css/adminlte.min.css')}}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+@endsection
+
 @section('content')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        ChartJS
-        <small>Preview sample</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Charts</a></li>
-        <li class="active">ChartJS</li>
-      </ol>
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Inline Charts</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Inline Charts</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <div class="row">
-        <div class="col-md-6">
-          <!-- AREA CHART -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Area Chart</h3>
+      <div class="container-fluid">
+        <!-- row -->
+        <div class="row">
+          <div class="col-12">
+            <!-- jQuery Knob -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="far fa-chart-bar"></i>
+                  jQuery Knob
+                </h3>
 
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                      class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                  </button>
+                </div>
               </div>
-            </div>
-            <div class="box-body">
-              <div class="chart">
-                <canvas id="areaChart" style="height:250px"></canvas>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-6 col-md-3 text-center">
+                    <input type="text" class="knob" value="30" data-width="90" data-height="90" data-fgColor="#3c8dbc">
+
+                    <div class="knob-label">New Visitors</div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-6 col-md-3 text-center">
+                    <input type="text" class="knob" value="70" data-width="90" data-height="90" data-fgColor="#f56954">
+
+                    <div class="knob-label">Bounce Rate</div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-6 col-md-3 text-center">
+                    <input type="text" class="knob" value="-80" data-min="-150" data-max="150" data-width="90"
+                           data-height="90" data-fgColor="#00a65a">
+
+                    <div class="knob-label">Server Load</div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-6 col-md-3 text-center">
+                    <input type="text" class="knob" value="40" data-width="90" data-height="90" data-fgColor="#00c0ef">
+
+                    <div class="knob-label">Disk Space</div>
+                  </div>
+                  <!-- ./col -->
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                  <div class="col-6 text-center">
+                    <input type="text" class="knob" value="90" data-width="90" data-height="90" data-fgColor="#932ab6">
+
+                    <div class="knob-label">Bandwidth</div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-6 text-center">
+                    <input type="text" class="knob" value="50" data-width="90" data-height="90" data-fgColor="#39CCCC">
+
+                    <div class="knob-label">CPU</div>
+                  </div>
+                  <!-- ./col -->
+                </div>
+                <!-- /.row -->
               </div>
+              <!-- /.card-body -->
             </div>
-            <!-- /.box-body -->
+            <!-- /.card -->
           </div>
-          <!-- /.box -->
-
-          <!-- DONUT CHART -->
-          <div class="box box-danger">
-            <div class="box-header with-border">
-              <h3 class="box-title">Donut Chart</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-              <canvas id="pieChart" style="height:250px"></canvas>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
+          <!-- /.col -->
         </div>
-        <!-- /.col (LEFT) -->
-        <div class="col-md-6">
-          <!-- LINE CHART -->
-          <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Line Chart</h3>
+        <!-- /.row -->
 
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="far fa-chart-bar"></i>
+                  工作技能
+                </h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                      class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                  </button>
+                </div>
               </div>
-            </div>
-            <div class="box-body">
-              <div class="chart">
-                <canvas id="lineChart" style="height:250px"></canvas>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-6 col-md-3 text-center">
+                    <input type="text" class="knob" value="30" data-width="90" data-height="90" data-fgColor="#3c8dbc"
+                           data-readonly="true">
+
+                    <div class="knob-label">data-width="90"</div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-6 col-md-3 text-center">
+                    <input type="text" class="knob" value="30" data-width="120" data-height="120"
+                           data-fgColor="#f56954">
+
+                    <div class="knob-label">PHP</div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-6 col-md-3 text-center">
+                    <input type="text" class="knob" value="30" data-thickness="0.1" data-width="90" data-height="90"
+                           data-fgColor="#00a65a">
+
+                    <div class="knob-label">data-thickness="0.1"</div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-6 col-md-3 text-center">
+                    <input type="text" class="knob" data-thickness="0.2" data-angleArc="250" data-angleOffset="-125"
+                           value="30" data-width="120" data-height="120" data-fgColor="#00c0ef">
+
+                    <div class="knob-label">data-angleArc="250"</div>
+                  </div>
+                  <!-- ./col -->
+                </div>
+                <!-- /.row -->
               </div>
+              <!-- /.card-body -->
             </div>
-            <!-- /.box-body -->
+            <!-- /.card -->
           </div>
-          <!-- /.box -->
-
-          <!-- BAR CHART -->
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">Bar Chart</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-              <div class="chart">
-                <canvas id="barChart" style="height:230px"></canvas>
-              </div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
+          <!-- /.col -->
         </div>
-        <!-- /.col (RIGHT) -->
-      </div>
-      <!-- /.row -->
+        <!-- /.row -->
 
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="far fa-chart-bar"></i>
+                  jQuery Knob Tron Style
+                </h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                      class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-6 col-md-3 text-center">
+                    <input type="text" class="knob" value="80" data-skin="tron" data-thickness="0.2" data-width="90"
+                           data-height="90" data-fgColor="#3c8dbc" data-readonly="true">
+
+                    <div class="knob-label">data-width="90"</div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-6 col-md-3 text-center">
+                    <input type="text" class="knob" value="60" data-skin="tron" data-thickness="0.2" data-width="120"
+                           data-height="120" data-fgColor="#f56954">
+
+                    <div class="knob-label">data-width="120"</div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-6 col-md-3 text-center">
+                    <input type="text" class="knob" value="10" data-skin="tron" data-thickness="0.1" data-width="90"
+                           data-height="90" data-fgColor="#00a65a">
+
+                    <div class="knob-label">data-thickness="0.1"</div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-6 col-md-3 text-center">
+                    <input type="text" class="knob" value="100" data-skin="tron" data-thickness="0.2"
+                           data-angleArc="250" data-angleOffset="-125" data-width="120" data-height="120"
+                           data-fgColor="#00c0ef">
+
+                    <div class="knob-label">data-angleArc="250"</div>
+                  </div>
+                  <!-- ./col -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+      </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
-
+  <div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add user</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <form id="form_data" method="post">
+            {{csrf_field()}}
+            <div class="form-group has-feedback">
+              <input type="email" name="email" class="form-control" placeholder="Email">
+              <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+              <input type="text" name="name" class="form-control" placeholder="Name">
+              <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="Close">Close</button>
+          <button type="button" class="btn btn-primary"  onclick="add()">Save changes</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
 @endsection
-<script src="{{asset('AdminLTE/bower_components/jquery/dist/jquery.min.js')}}"></script>
-<script src="{{asset('AdminLTE/bower_components/chart.js/Chart.js')}}"></script>
 
-<script>
-  $(function () {
-    /* ChartJS
-     * -------
-     * Here we will create a few charts using ChartJS
-     */
+@section('js')
+  <!-- jQuery -->
+  <script src="{{asset('AdminLTE/plugins/jquery/jquery.min.js')}}"></script>
+  <!-- Bootstrap 4 -->
+  <script src="{{asset('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
-    //--------------
-    //- AREA CHART -
-    //--------------
+  <!-- AdminLTE App -->
+  <script src="{{asset('AdminLTE/dist/js/adminlte.min.js')}}"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="{{asset('AdminLTE/dist/js/demo.js')}}"></script>
+  <!-- jQuery Knob -->
+  <script src="{{asset('AdminLTE/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
+  <!-- Sparkline -->
+  <script src="{{asset('AdminLTE/plugins/sparklines/sparkline.js')}}"></script>
+@endsection
 
-    // Get context with jQuery - using jQuery's .get() method.
-    var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
-    // This will get the first returned node in the jQuery collection.
-    var areaChart       = new Chart(areaChartCanvas)
+@section('script')
+  <script>
+    $(function () {
+      /* jQueryKnob */
 
-    var areaChartData = {
-      labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: [
-        {
-          label               : 'Electronics',
-          fillColor           : 'rgba(210, 214, 222, 1)',
-          strokeColor         : 'rgba(210, 214, 222, 1)',
-          pointColor          : 'rgba(210, 214, 222, 1)',
-          pointStrokeColor    : '#c1c7d1',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [65, 59, 80, 81, 56, 55, 1111]
-        },
-        {
-          label               : 'Digital Goods',
-          fillColor           : 'rgba(60,141,188,0.9)',
-          strokeColor         : 'rgba(60,141,188,0.8)',
-          pointColor          : '#3b8bba',
-          pointStrokeColor    : 'rgba(60,141,188,1)',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [28, 48, 40, 19, 86, 27, 90]
+      $('.knob').knob({
+        /*change : function (value) {
+         //console.log("change : " + value);
+         },
+         release : function (value) {
+         console.log("release : " + value);
+         },
+         cancel : function () {
+         console.log("cancel : " + this.value);
+         },*/
+        draw: function () {
+
+          // "tron" case
+          if (this.$.data('skin') == 'tron') {
+
+            var a   = this.angle(this.cv)  // Angle
+              ,
+              sa  = this.startAngle          // Previous start angle
+              ,
+              sat = this.startAngle         // Start angle
+              ,
+              ea                            // Previous end angle
+              ,
+              eat = sat + a                 // End angle
+              ,
+              r   = true
+
+            this.g.lineWidth = this.lineWidth
+
+            this.o.cursor
+            && (sat = eat - 0.3)
+            && (eat = eat + 0.3)
+
+            if (this.o.displayPrevious) {
+              ea = this.startAngle + this.angle(this.value)
+              this.o.cursor
+              && (sa = ea - 0.3)
+              && (ea = ea + 0.3)
+              this.g.beginPath()
+              this.g.strokeStyle = this.previousColor
+              this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false)
+              this.g.stroke()
+            }
+
+            this.g.beginPath()
+            this.g.strokeStyle = r ? this.o.fgColor : this.fgColor
+            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false)
+            this.g.stroke()
+
+            this.g.lineWidth = 2
+            this.g.beginPath()
+            this.g.strokeStyle = this.o.fgColor
+            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false)
+            this.g.stroke()
+
+            return false
+          }
         }
-      ]
+      })
+      /* END JQUERY KNOB */
+
+      //INITIALIZE SPARKLINE CHARTS
+      $('.sparkline').each(function () {
+        var $this = $(this)
+        $this.sparkline('html', $this.data())
+      })
+
+      /* SPARKLINE DOCUMENTATION EXAMPLES http://omnipotent.net/jquery.sparkline/#s-about */
+      drawDocSparklines()
+      drawMouseSpeedDemo()
+
+    })
+
+    function drawDocSparklines() {
+
+      // Bar + line composite charts
+      $('#compositebar').sparkline('html', {
+        type    : 'bar',
+        barColor: '#aaf'
+      })
+      $('#compositebar').sparkline([4, 1, 5, 7, 9, 9, 8, 7, 6, 6, 4, 7, 8, 4, 3, 2, 2, 5, 6, 7],
+        {
+          composite: true,
+          fillColor: false,
+          lineColor: 'red'
+        })
+
+
+      // Line charts taking their values from the tag
+      $('.sparkline-1').sparkline()
+
+      // Larger line charts for the docs
+      $('.largeline').sparkline('html',
+        {
+          type  : 'line',
+          height: '2.5em',
+          width : '4em'
+        })
+
+      // Customized line chart
+      $('#linecustom').sparkline('html',
+        {
+          height      : '1.5em',
+          width       : '8em',
+          lineColor   : '#f00',
+          fillColor   : '#ffa',
+          minSpotColor: false,
+          maxSpotColor: false,
+          spotColor   : '#77f',
+          spotRadius  : 3
+        })
+
+      // Bar charts using inline values
+      $('.sparkbar').sparkline('html', { type: 'bar' })
+
+      $('.barformat').sparkline([1, 3, 5, 3, 8], {
+        type               : 'bar',
+        tooltipFormat      : '@{{value:levels}} - @{{value}}',
+        tooltipValueLookups: {
+          levels: $.range_map({
+            ':2' : 'Low',
+            '3:6': 'Medium',
+            '7:' : 'High'
+          })
+        }
+      })
+
+      // Tri-state charts using inline values
+      $('.sparktristate').sparkline('html', { type: 'tristate' })
+      $('.sparktristatecols').sparkline('html',
+        {
+          type    : 'tristate',
+          colorMap: {
+            '-2': '#fa7',
+            '2' : '#44f'
+          }
+        })
+
+      // Composite line charts, the second using values supplied via javascript
+      $('#compositeline').sparkline('html', {
+        fillColor     : false,
+        changeRangeMin: 0,
+        chartRangeMax : 10
+      })
+      $('#compositeline').sparkline([4, 1, 5, 7, 9, 9, 8, 7, 6, 6, 4, 7, 8, 4, 3, 2, 2, 5, 6, 7],
+        {
+          composite     : true,
+          fillColor     : false,
+          lineColor     : 'red',
+          changeRangeMin: 0,
+          chartRangeMax : 10
+        })
+
+      // Line charts with normal range marker
+      $('#normalline').sparkline('html',
+        {
+          fillColor     : false,
+          normalRangeMin: -1,
+          normalRangeMax: 8
+        })
+      $('#normalExample').sparkline('html',
+        {
+          fillColor       : false,
+          normalRangeMin  : 80,
+          normalRangeMax  : 95,
+          normalRangeColor: '#4f4'
+        })
+
+      // Discrete charts
+      $('.discrete1').sparkline('html',
+        {
+          type     : 'discrete',
+          lineColor: 'blue',
+          xwidth   : 18
+        })
+      $('#discrete2').sparkline('html',
+        {
+          type          : 'discrete',
+          lineColor     : 'blue',
+          thresholdColor: 'red',
+          thresholdValue: 4
+        })
+
+      // Bullet charts
+      $('.sparkbullet').sparkline('html', { type: 'bullet' })
+
+      // Pie charts
+      $('.sparkpie').sparkline('html', {
+        type  : 'pie',
+        height: '1.0em'
+      })
+
+      // Box plots
+      $('.sparkboxplot').sparkline('html', { type: 'box' })
+      $('.sparkboxplotraw').sparkline([1, 3, 5, 8, 10, 15, 18],
+        {
+          type        : 'box',
+          raw         : true,
+          showOutliers: true,
+          target      : 6
+        })
+
+      // Box plot with specific field order
+      $('.boxfieldorder').sparkline('html', {
+        type                     : 'box',
+        tooltipFormatFieldlist   : ['med', 'lq', 'uq'],
+        tooltipFormatFieldlistKey: 'field'
+      })
+
+      // click event demo sparkline
+      $('.clickdemo').sparkline()
+      $('.clickdemo').bind('sparklineClick', function (ev) {
+        var sparkline = ev.sparklines[0],
+          region    = sparkline.getCurrentRegionFields()
+        value         = region.y
+        alert('Clicked on x=' + region.x + ' y=' + region.y)
+      })
+
+      // mouseover event demo sparkline
+      $('.mouseoverdemo').sparkline()
+      $('.mouseoverdemo').bind('sparklineRegionChange', function (ev) {
+        var sparkline = ev.sparklines[0],
+          region    = sparkline.getCurrentRegionFields()
+        value         = region.y
+        $('.mouseoverregion').text('x=' + region.x + ' y=' + region.y)
+      }).bind('mouseleave', function () {
+        $('.mouseoverregion').text('')
+      })
     }
 
-    var areaChartOptions = {
-      //Boolean - If we should show the scale at all
-      showScale               : true,
-      //Boolean - Whether grid lines are shown across the chart
-      scaleShowGridLines      : false,
-      //String - Colour of the grid lines
-      scaleGridLineColor      : 'rgba(0,0,0,.05)',
-      //Number - Width of the grid lines
-      scaleGridLineWidth      : 1,
-      //Boolean - Whether to show horizontal lines (except X axis)
-      scaleShowHorizontalLines: true,
-      //Boolean - Whether to show vertical lines (except Y axis)
-      scaleShowVerticalLines  : true,
-      //Boolean - Whether the line is curved between points
-      bezierCurve             : true,
-      //Number - Tension of the bezier curve between points
-      bezierCurveTension      : 0.3,
-      //Boolean - Whether to show a dot for each point
-      pointDot                : false,
-      //Number - Radius of each point dot in pixels
-      pointDotRadius          : 4,
-      //Number - Pixel width of point dot stroke
-      pointDotStrokeWidth     : 1,
-      //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-      pointHitDetectionRadius : 20,
-      //Boolean - Whether to show a stroke for datasets
-      datasetStroke           : true,
-      //Number - Pixel width of dataset stroke
-      datasetStrokeWidth      : 2,
-      //Boolean - Whether to fill the dataset with a color
-      datasetFill             : true,
-      //String - A legend template
-      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].lineColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-      //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-      maintainAspectRatio     : true,
-      //Boolean - whether to make the chart responsive to window resizing
-      responsive              : true
-    }
-
-    //Create the line chart
-    areaChart.Line(areaChartData, areaChartOptions)
-
-    //-------------
-    //- LINE CHART -
-    //--------------
-    var lineChartCanvas          = $('#lineChart').get(0).getContext('2d')
-    var lineChart                = new Chart(lineChartCanvas)
-    var lineChartOptions         = areaChartOptions
-    lineChartOptions.datasetFill = false
-    lineChart.Line(areaChartData, lineChartOptions)
-
-    //-------------
-    //- PIE CHART -
-    //-------------
-    // Get context with jQuery - using jQuery's .get() method.
-    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-    var pieChart       = new Chart(pieChartCanvas)
-    var PieData        = [
-      {
-        value    : 700,
-        color    : '#f56954',
-        highlight: '#f56954',
-        label    : 'Chrome'
-      },
-      {
-        value    : 500,
-        color    : '#00a65a',
-        highlight: '#00a65a',
-        label    : 'IE'
-      },
-      {
-        value    : 400,
-        color    : '#f39c12',
-        highlight: '#f39c12',
-        label    : 'FireFox'
-      },
-      {
-        value    : 600,
-        color    : '#00c0ef',
-        highlight: '#00c0ef',
-        label    : 'Safari'
-      },
-      {
-        value    : 300,
-        color    : '#3c8dbc',
-        highlight: '#3c8dbc',
-        label    : 'Opera'
-      },
-      {
-        value    : 100,
-        color    : '#d2d6de',
-        highlight: '#d2d6de',
-        label    : 'Navigator'
+    /**
+     ** Draw the little mouse speed animated graph
+     ** This just attaches a handler to the mousemove event to see
+     ** (roughly) how far the mouse has moved
+     ** and then updates the display a couple of times a second via
+     ** setTimeout()
+     **/
+    function drawMouseSpeedDemo() {
+      var mrefreshinterval = 500 // update display every 500ms
+      var lastmousex       = -1
+      var lastmousey       = -1
+      var lastmousetime
+      var mousetravel      = 0
+      var mpoints          = []
+      var mpoints_max      = 30
+      $('html').mousemove(function (e) {
+        var mousex = e.pageX
+        var mousey = e.pageY
+        if (lastmousex > -1) {
+          mousetravel += Math.max(Math.abs(mousex - lastmousex), Math.abs(mousey - lastmousey))
+        }
+        lastmousex = mousex
+        lastmousey = mousey
+      })
+      var mdraw = function () {
+        var md      = new Date()
+        var timenow = md.getTime()
+        if (lastmousetime && lastmousetime != timenow) {
+          var pps = Math.round(mousetravel / (timenow - lastmousetime) * 1000)
+          mpoints.push(pps)
+          if (mpoints.length > mpoints_max) {
+            mpoints.splice(0, 1)
+          }
+          mousetravel = 0
+          $('#mousespeed').sparkline(mpoints, {
+            width        : mpoints.length * 2,
+            tooltipSuffix: ' pixels per second'
+          })
+        }
+        lastmousetime = timenow
+        setTimeout(mdraw, mrefreshinterval)
       }
-    ]
-    var pieOptions     = {
-      //Boolean - Whether we should show a stroke on each segment
-      segmentShowStroke    : true,
-      //String - The colour of each segment stroke
-      segmentStrokeColor   : '#fff',
-      //Number - The width of each segment stroke
-      segmentStrokeWidth   : 2,
-      //Number - The percentage of the chart that we cut out of the middle
-      percentageInnerCutout: 50, // This is 0 for Pie charts
-      //Number - Amount of animation steps
-      animationSteps       : 100,
-      //String - Animation easing effect
-      animationEasing      : 'easeOutBounce',
-      //Boolean - Whether we animate the rotation of the Doughnut
-      animateRotate        : true,
-      //Boolean - Whether we animate scaling the Doughnut from the centre
-      animateScale         : false,
-      //Boolean - whether to make the chart responsive to window resizing
-      responsive           : true,
-      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-      maintainAspectRatio  : true,
-      //String - A legend template
-      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+      // We could use setInterval instead, but I prefer to do it this way
+      setTimeout(mdraw, mrefreshinterval);
     }
-    //Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
-    pieChart.Doughnut(PieData, pieOptions)
-
-    //-------------
-    //- BAR CHART -
-    //-------------
-    var barChartCanvas                   = $('#barChart').get(0).getContext('2d')
-    var barChart                         = new Chart(barChartCanvas)
-    var barChartData                     = areaChartData
-    barChartData.datasets[1].fillColor   = '#00a65a'
-    barChartData.datasets[1].strokeColor = '#00a65a'
-    barChartData.datasets[1].pointColor  = '#00a65a'
-    var barChartOptions                  = {
-      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-      scaleBeginAtZero        : true,
-      //Boolean - Whether grid lines are shown across the chart
-      scaleShowGridLines      : true,
-      //String - Colour of the grid lines
-      scaleGridLineColor      : 'rgba(0,0,0,.05)',
-      //Number - Width of the grid lines
-      scaleGridLineWidth      : 1,
-      //Boolean - Whether to show horizontal lines (except X axis)
-      scaleShowHorizontalLines: true,
-      //Boolean - Whether to show vertical lines (except Y axis)
-      scaleShowVerticalLines  : true,
-      //Boolean - If there is a stroke on each bar
-      barShowStroke           : true,
-      //Number - Pixel width of the bar stroke
-      barStrokeWidth          : 2,
-      //Number - Spacing between each of the X value sets
-      barValueSpacing         : 5,
-      //Number - Spacing between data sets within X values
-      barDatasetSpacing       : 1,
-      //String - A legend template
-      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-      //Boolean - whether to make the chart responsive
-      responsive              : true,
-      maintainAspectRatio     : true
-    }
-
-    barChartOptions.datasetFill = false
-    barChart.Bar(barChartData, barChartOptions)
-  })
-</script>
+  </script>
+@stop

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Auth;
 use App\Handlers\ImageUploadHandler;
+use App\Http\Requests\UserRequest;
 
 class UsersController extends Controller
 {
@@ -37,7 +38,7 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $user)
+    public function store(UserRequest $request, User $user)
     {
         $request->except('_token');
         $user->name = $request->name;

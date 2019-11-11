@@ -9,6 +9,11 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   @yield('css')
+  <!-- Toastr -->
+  <link rel="stylesheet" href="{{asset('AdminLTE/plugins/toastr/toastr.min.css')}}">
+  <style>
+    @yield('style')
+  </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -33,6 +38,8 @@
 </div>
 <!-- ./wrapper -->
   @yield('js')
+
+<script src="{{asset('AdminLTE/plugins/toastr/toastr.min.js')}}"></script>
   @yield('script')
 </body>
 </html>
