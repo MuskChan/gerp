@@ -1,66 +1,92 @@
-/* DirectChat()
- * ===============
- * Toggles the state of the control sidebar
- *
- * @Usage: $('#my-chat-box').directChat()
- *         or add [data-widget="direct-chat"] to the trigger
+/**
+ * --------------------------------------------
+ * AdminLTE DirectChat.js
+ * License MIT
+ * --------------------------------------------
  */
-+function ($) {
-  'use strict';
 
-  var DataKey = 'lte.directchat';
+const DirectChat = (($) => {
+  /**
+   * Constants
+   * ====================================================
+   */
 
-  var Selector = {
-    data: '[data-widget="chat-pane-toggle"]',
-    box : '.direct-chat'
-  };
+  const NAME               = 'DirectChat'
+  const DATA_KEY           = 'lte.directchat'
+  const EVENT_KEY          = `.${DATA_KEY}`
+  const JQUERY_NO_CONFLICT = $.fn[NAME]
+  const DATA_API_KEY       = '.data-api'
 
-  var ClassName = {
-    open: 'direct-chat-contacts-open'
-  };
-
-  // DirectChat Class Definition
-  // ===========================
-  var DirectChat = function (element) {
-    this.element = element;
-  };
-
-  DirectChat.prototype.toggle = function ($trigger) {
-    $trigger.parents(Selector.box).first().toggleClass(ClassName.open);
-  };
-
-  // Plugin Definition
-  // =================
-  function Plugin(option) {
-    return this.each(function () {
-      var $this = $(this);
-      var data  = $this.data(DataKey);
-
-      if (!data) {
-        $this.data(DataKey, (data = new DirectChat($this)));
-      }
-
-      if (typeof option == 'string') data.toggle($this);
-    });
+  const Event = {
+    TOGGLED: `toggled{EVENT_KEY}`
   }
 
-  var old = $.fn.directChat;
-
-  $.fn.directChat             = Plugin;
-  $.fn.directChat.Constructor = DirectChat;
-
-  // No Conflict Mode
-  // ================
-  $.fn.directChat.noConflict = function () {
-    $.fn.directChat = old;
-    return this;
+  const Selector = {
+    DATA_TOGGLE: '[data-widget="chat-pane-toggle"]',
+    DIRECT_CHAT: '.direct-chat'
   };
 
-  // DirectChat Data API
-  // ===================
-  $(document).on('click', Selector.data, function (event) {
+  const ClassName = {
+    DIRECT_CHAT_OPEN: 'direct-chat-contacts-open'
+  };
+
+  /**
+   * Class Definition
+   * ====================================================
+   */
+
+  class DirectChat {
+    constructor(element, config) {
+      this._element = element
+    }
+
+    toggle() {
+      $(this._element).parents(Selector.DIRECT_CHAT).first().toggleClass(ClassName.DIRECT_CHAT_OPEN);
+
+      const toggledEvent = $.Event(Event.TOGGLED)
+      $(this._element).trigger(toggledEvent)
+    }
+
+    // Static
+
+    static _jQueryInterface(config) {
+      return this.each(function () {
+        let data      = $(this).data(DATA_KEY)
+
+        if (!data) {
+          data = new DirectChat($(this))
+          $(this).data(DATA_KEY, data)
+        }
+
+        data[config]()
+      })
+    }
+  }
+
+  /**
+   *
+   * Data Api implementation
+   * ====================================================
+   */
+
+  $(document).on('click', Selector.DATA_TOGGLE, function (event) {
     if (event) event.preventDefault();
-    Plugin.call($(this), 'toggle');
+    DirectChat._jQueryInterface.call($(this), 'toggle');
   });
 
-}(jQuery);
+  /**
+   * jQuery API
+   * ====================================================
+   */
+
+  $.fn[NAME] = DirectChat._jQueryInterface
+  $.fn[NAME].Constructor = DirectChat
+  $.fn[NAME].noConflict  = function () {
+    $.fn[NAME] = JQUERY_NO_CONFLICT
+    return DirectChat._jQueryInterface
+  }
+
+  return DirectChat
+})(jQuery)
+
+export default DirectChat
