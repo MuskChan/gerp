@@ -44,6 +44,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+              <button type="button" class="btn btn-block btn-default" style="width: 100px;float: right;" data-toggle="modal" data-target="#modal-default">Add</button>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -79,9 +80,9 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
+          <h4 class="modal-title">Add user</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">create user</h4>
         </div>
         <div class="modal-body">
           <form id="form_data" method="post">
@@ -97,14 +98,15 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default " data-dismiss="modal" id="Close">Close</button>
-          <button type="button" class="btn btn-primary" onclick="add()">Save changes</button>
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary"  onclick="add()">Save changes</button>
         </div>
       </div>
       <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
   </div>
+  <!-- /.modal -->
 @endsection
 
 @section('js')
