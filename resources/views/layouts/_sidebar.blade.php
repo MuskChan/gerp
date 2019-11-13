@@ -40,9 +40,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="./index2.html" class="nav-link">
+              <a href="{{route('scores.index')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>权限管理</p>
+                <p>当天评分</p>
               </a>
             </li>
           </ul>
