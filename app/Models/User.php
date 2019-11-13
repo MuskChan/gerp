@@ -36,4 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //访问器
+    public function getNameAttribute($value)
+    {
+        return 'hello '.ucfirst($value);
+    }
 }
