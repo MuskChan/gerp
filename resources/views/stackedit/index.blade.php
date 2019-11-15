@@ -95,6 +95,27 @@
   <script src="{{asset('AdminLTE/dist/js/pages/dashboard.js')}}"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="{{asset('AdminLTE/dist/js/demo.js')}}"></script>
+  <!-- stackedit -->
+  <script src="{{asset('stackedit.js/docs/lib/stackedit.min.js')}}"></script>
 @endsection
 
 
+@section('script')
+  <script>
+    const el = document.querySelector('textarea');
+    const stackedit = new Stackedit();
+
+    // Open the iframe
+    stackedit.openFile({
+      name: 'Filename', // with an optional filename
+      content: {
+        text: el.value // and the Markdown content.
+      }
+    });
+
+    // Listen to StackEdit events and apply the changes to the textarea.
+    stackedit.on('fileChange', (file) => {
+      el.value = file.content.text;
+    });
+  </script>
+@stop

@@ -11,11 +11,15 @@
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
-        <img src="{{Auth::user()->avatar}}" class="img-circle elevation-2" alt="User Image">
+      <div class="image" >
+        <a href="{{Auth::user()->avatar}}" data-toggle="lightbox" data-title="头像" data-footer="美好的回忆">
+          <img src="{{Auth::user()->avatar}}" class="img-circle elevation-2 img-fluid" alt="User Image">
+        </a>
       </div>
+
+
       <div class="info">
-        <a href="#" class="d-block">{{Auth::user()->name}}</a>
+        <a href="{{route('users.show',Auth::user()->id)}}" class="d-block">{{Auth::user()->name}}</a>
       </div>
     </div>
 
@@ -73,9 +77,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/layout/boxed.html" class="nav-link">
+              <a href="{{route('stackedits.index')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Boxed</p>
+                <p>编辑器</p>
               </a>
             </li>
             <li class="nav-item">

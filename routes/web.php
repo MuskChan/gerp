@@ -19,6 +19,7 @@ Route::group(['middleware' => 'auth'], function (){
     Route::resource('/', 'HomeController');
     Route::resource('/users', 'UsersController');
     Route::resource('/scores', 'ScoresController');
+    Route::resource('/stackedits', 'StackeditController');
     Route::resource('/charts', 'ChartsController');
     Route::get('/home', 'HomeController@index')->name('home');
 });
