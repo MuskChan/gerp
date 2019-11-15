@@ -35,6 +35,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            //记录用户最后活跃时间
+            \App\Http\Middleware\RecordLastActivedTime::class,
         ],
 
         'api' => [
@@ -70,6 +72,10 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
+
+    // 设定中间件优先级，此数组定义了除『全局中间件』以外的中间件执行顺序
+    // 可以看到 StartSession 永远是最开始执行的，因为 StartSession 后，
+    // 我们才能在程序中使用 Auth 等用户认证的功能。
     protected $middlewarePriority = [
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,

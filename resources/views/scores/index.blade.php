@@ -54,6 +54,9 @@
                   <th>id</th>
                   <th>score</th>
                   <th>remark</th>
+                  <th>time</th>
+                  <th style="width: 20%">
+                  </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -62,6 +65,24 @@
                       <td>{{$score->id}}</td>
                       <td>{{$score->score}}</td>
                       <td>{{$score->remark}}</td>
+                      <td>{{$score->created_at}}</td>
+                      <td class="project-actions text-right">
+                        <a class="btn btn-primary btn-sm" href="#">
+                          <i class="fas fa-folder">
+                          </i>
+                          View
+                        </a>
+                        <a class="btn btn-info btn-sm" href="#">
+                          <i class="fas fa-pencil-alt">
+                          </i>
+                          Edit
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="#" data-toggle="modal" data-target="#modal-sm"  onclick="del({{$score->id}})">
+                          <i class="fas fa-trash">
+                          </i>
+                          Delete
+                        </a>
+                      </td>
                     </tr>
                   @endforeach
                 </tbody>
@@ -116,6 +137,31 @@
     <!-- /.modal-dialog -->
   </div>
   <!-- /.modal -->
+
+  <div class="modal fade" id="modal-sm">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">删除该行？</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="post" id="form_del">
+          {{ csrf_field() }}
+          {{method_field('DELETE')}}
+          <input type="hidden" class="form-control" id="del-id" value="0">
+        </form>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="Close_del">Close</button>
+          <button type="button" class="btn btn-primary" onclick="destroy()">Yes</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
 @endsection
 
 @section('js')
@@ -143,6 +189,31 @@
       $('#rateMe1').mdbRate();
     });
 
+    function del($val) {
+      $('#del-id').attr('value',$val);
+    }
+    
+    function destroy() {
+      var form_data = $('#form_del').serialize();
+      var $del_id = $('#del-id').val();
+      $.ajax({
+        url: "{{route('scores.destroy', 2)}}",
+        type: 'POST',
+        data: form_data,
+        success: function(res){
+          if(res.code == 1){
+            $('#Close_del').click();
+            toastr.success(res.msg);
+          }else {
+            toastr.error(res.message);
+          }
+        },
+        error: function(data){
+          toastr.error(data.responseJSON.message);
+        }
+      });
+    }
+    
     //评分
     function add() {
       var form_data = $('#form_data').serialize();
