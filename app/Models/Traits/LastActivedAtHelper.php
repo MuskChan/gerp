@@ -23,11 +23,13 @@ trait LastActivedAtHelper
         $field = $this->field_prefix . $this->id;
 //
 //        dd(Redis::hGetAll($hash));
+//        dd(Redis::get($field));
         //当前时间
         $now = Carbon::now()->toDateTimeString();
 
         //写入Redis，存在会被更新
-        Redis::hSet($hash, $field, $now);
+//        Redis::hSet($hash, $field, $now);
+//        Redis::set($field,$now);
 
     }
 }

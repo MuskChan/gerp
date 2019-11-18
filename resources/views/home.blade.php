@@ -31,7 +31,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+            <h1 class="m-0 text-dark" id="app">@{{ message }}</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -95,6 +95,19 @@
   <script src="{{asset('AdminLTE/dist/js/pages/dashboard.js')}}"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="{{asset('AdminLTE/dist/js/demo.js')}}"></script>
+  <!-- vue js -->
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
 @endsection
+
+@section('script')
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message : 'hello vue hello gerp'
+      }
+    })
+  </script>
+@stop
 
 
