@@ -61,9 +61,9 @@ class ScoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Score $score)
     {
-        //
+        return view('scores.edit', compact('score'));
     }
 
     /**
@@ -73,9 +73,12 @@ class ScoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Score $score)
     {
-        //
+        $data = $request->except('_token');
+        $score->update($data);
+
+        return success('更新评分成功');
     }
 
     /**

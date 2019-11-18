@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Auth;
 use App\Handlers\ImageUploadHandler;
 use App\Http\Requests\UserRequest;
+use Redis;
 
 class UsersController extends Controller
 {
@@ -19,6 +20,7 @@ class UsersController extends Controller
     public function index(User $user)
     {
         $users = $user->all();
+//        Redis::
         return view('users.index', compact('users'));
     }
 
@@ -29,7 +31,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -66,9 +68,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('users.edit', compact('user'));
     }
 
     /**

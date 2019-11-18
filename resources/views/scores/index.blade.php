@@ -72,7 +72,7 @@
                           </i>
                           View
                         </a>
-                        <a class="btn btn-info btn-sm" href="#">
+                        <a class="btn btn-info btn-sm" href="{{route('scores.edit',$score->id)}}">
                           <i class="fas fa-pencil-alt">
                           </i>
                           Edit
@@ -115,11 +115,11 @@
               <label>评分</label>
               <select name="score" class="form-control select2" style="width: 100%;">
                 <option></option>
-                <option value="1">一颗星</option>
-                <option value="2">两颗星</option>
-                <option value="3">三颗星</option>
-                <option value="4">四颗星</option>
-                <option value="5">五颗星</option>
+                <option value="1">一颗星（非常糟糕）</option>
+                <option value="2">两颗星（糟糕）</option>
+                <option value="3">三颗星（一般）</option>
+                <option value="4">四颗星（满意）</option>
+                <option value="5">五颗星（完美）</option>
               </select>
             </div>
             <div class="form-group has-feedback">
