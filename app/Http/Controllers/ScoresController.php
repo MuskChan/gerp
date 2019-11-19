@@ -91,6 +91,6 @@ class ScoresController extends Controller
     {
         Score::destroy($id);
 
-        return success('删除成功');
+        return [];
     }
 }

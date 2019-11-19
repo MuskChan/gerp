@@ -207,7 +207,7 @@
               return;
             }
             // 调用删除接口，用 id 来拼接出请求的 url
-            axios.delete('/score/' + id)
+            axios.delete('/scores/' + id)
               .then(function () {
                 // 请求成功之后重新加载页面
                 location.reload();
