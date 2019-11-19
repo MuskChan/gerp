@@ -14,6 +14,8 @@
   <!-- Select2 -->
   <link rel="stylesheet" href="{{asset('AdminLTE/plugins/select2/css/select2.min.css')}}">
   <link rel="stylesheet" href="{{asset('AdminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+  <!-- swal-forms -->
+  <link rel="stylesheet" href="{{asset('others/swal-forms.css')}}">
 @endsection
 
 @section('content')
@@ -77,7 +79,7 @@
                           </i>
                           Edit
                         </a>
-                        <a class="btn btn-danger btn-sm" href="#" data-toggle="modal" data-target="#modal-sm"  onclick="del({{$score->id}})">
+                        <a class="btn btn-danger btn-sm btn-del-score" href="#"  data-id="{{ $score->id }}">
                           <i class="fas fa-trash">
                           </i>
                           Delete
@@ -138,7 +140,7 @@
   </div>
   <!-- /.modal -->
 
-  <div class="modal fade" id="modal-sm">
+  <div class="modal fade" >
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
@@ -180,10 +182,40 @@
   <script src="{{asset('MDB/js/addons/rating.min.js')}}"></script>
   <!-- Select2 -->
   <script src="{{asset('AdminLTE/plugins/select2/js/select2.full.min.js')}}"></script>
+  <!-- swal-forms -->
+  <link rel="stylesheet" href="{{asset('others/swal-forms.js')}}">
 @endsection
 
 @section('script')
   <script>
+    $(document).ready(function() {
+      // 删除按钮点击事件
+      $('.btn-del-score').click(function() {
+        // 获取按钮上 data-id 属性的值，也就是地址 ID
+        var id = $(this).data('id');
+        // 调用 sweetalert
+        swal({
+          title: "确认要删除该地址？",
+          icon: "warning",
+          buttons: ['取消', '确定'],
+          dangerMode: true,
+        })
+          .then(function(willDelete) { // 用户点击按钮后会触发这个回调函数
+            // 用户点击确定 willDelete 值为 true， 否则为 false
+            // 用户点了取消，啥也不做
+            if (!willDelete) {
+              return;
+            }
+            // 调用删除接口，用 id 来拼接出请求的 url
+            axios.delete('/score/' + id)
+              .then(function () {
+                // 请求成功之后重新加载页面
+                location.reload();
+              })
+          });
+      });
+    });
+
     // Rating Initialization
     $(document).ready(function() {
       $('#rateMe1').mdbRate();
@@ -194,24 +226,10 @@
     }
     
     function destroy() {
-      var form_data = $('#form_del').serialize();
-      var $del_id = $('#del-id').val();
-      $.ajax({
-        url: "{{route('scores.destroy', 2)}}",
-        type: 'POST',
-        data: form_data,
-        success: function(res){
-          if(res.code == 1){
-            $('#Close_del').click();
-            toastr.success(res.msg);
-          }else {
-            toastr.error(res.message);
-          }
-        },
-        error: function(data){
-          toastr.error(data.responseJSON.message);
-        }
-      });
+      var conf = window.confirm('确定删除？')
+      if (conf){
+
+      }
     }
     
     //评分

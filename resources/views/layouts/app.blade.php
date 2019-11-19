@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="{{asset('AdminLTE/plugins/ekko-lightbox/ekko-lightbox.css')}}">
   <!-- Toastr -->
   <link rel="stylesheet" href="{{asset('AdminLTE/plugins/toastr/toastr.min.css')}}">
+  <!-- 样式 -->
+  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <style>
     @yield('style')
   </style>
@@ -40,7 +42,8 @@
 </div>
 <!-- ./wrapper -->
   @yield('js')
-
+  <!-- JS 脚本 -->
+  <script src="{{ mix('js/app.js') }}"></script>
   <!-- Ekko Lightbox -->
   <script src="{{asset('AdminLTE/plugins/ekko-lightbox/ekko-lightbox.min.js')}}"></script>
   <script src="{{asset('AdminLTE/plugins/toastr/toastr.min.js')}}"></script>

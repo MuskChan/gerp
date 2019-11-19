@@ -23,6 +23,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "stackedit-js": "^1.0.7"
+        "stackedit-js": "^1.0.7",
+        "sweetalert": "^2.1.2"
     }
 }
