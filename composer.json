@@ -17,7 +17,8 @@
         "laravel/tinker": "^1.0",
         "laravel/ui": "^1.1",
         "overtrue/easy-sms": "^1.1",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "socialiteproviders/weixin": "^4.0"
     },
     "require-dev": {
         "facade/ignition": "1.11.1",
