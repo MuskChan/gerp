@@ -18,7 +18,8 @@
         "laravel/ui": "^1.1",
         "overtrue/easy-sms": "^1.1",
         "predis/predis": "^1.1",
-        "socialiteproviders/weixin": "^4.0"
+        "socialiteproviders/weixin": "^4.0",
+        "tymon/jwt-auth": "1.0.0-rc.5"
     },
     "require-dev": {
         "facade/ignition": "1.11.1",
