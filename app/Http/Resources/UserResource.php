@@ -26,6 +26,7 @@ class UserResource extends JsonResource
         return $data;
     }
 
+    //开关
     public function showSensitiveFields()
     {
         $this->showSensitiveFields = true;
