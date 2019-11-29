@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        dd(LARAVEL_START);
         return view('home');
     }
 }
